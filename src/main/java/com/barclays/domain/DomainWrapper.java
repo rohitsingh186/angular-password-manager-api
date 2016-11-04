@@ -1,22 +1,24 @@
 package com.barclays.domain;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 
 @XmlRootElement
 public class DomainWrapper {
 	
-	private Domain domain;
+	private List<Domain> domainList;
 	
 	public DomainWrapper() {
 	}
 
-	public Domain getDomain() {
-		return domain;
+	public List<Domain> getDomain() {
+		return domainList;
 	}
 
-	public void setDomain(Domain domain) {
-		this.domain = domain;
+	public void setDomain(List<Domain> domainList) {
+		this.domainList = domainList;
 	}
 	
 }

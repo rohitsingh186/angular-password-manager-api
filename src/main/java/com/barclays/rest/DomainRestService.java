@@ -1,31 +1,30 @@
 package com.barclays.rest;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import com.barclays.domain.Domain;
+import javax.ws.rs.core.Response;
+
+import com.barclays.domain.DomainWrapper;
 import com.barclays.service.DomainService;
-
-
 
 @Path("/domains")
 public class DomainRestService {
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Domain> getDomain() {
+	public Response getDomains() {
 		DomainService domainService = new DomainService();
-		
-		Domain domain = domainService.getDomain();
-		
-		List<Domain> domainList = new ArrayList<Domain> ();
-		domainList.add(domain);
-		return domainList;
+
+		DomainWrapper domainWrapper = domainService.getDomainWrapper();
+		// List<Domain> domainList = domainService.getDomains();
+
+		return Response.ok().entity(domainWrapper)
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT")
+				.build();
+		// return domainList;
 	}
-	
-	
+
 }
