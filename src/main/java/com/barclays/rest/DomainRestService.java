@@ -1,5 +1,8 @@
 package com.barclays.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -14,9 +17,14 @@ public class DomainRestService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Domain getDomain() {
+	public List<Domain> getDomain() {
 		DomainService domainService = new DomainService();
-		return domainService.getDomain();
+		
+		Domain domain = domainService.getDomain();
+		
+		List<Domain> domainList = new ArrayList<Domain> ();
+		domainList.add(domain);
+		return domainList;
 	}
 	
 	

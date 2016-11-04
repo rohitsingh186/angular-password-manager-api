@@ -8,7 +8,7 @@ public class DomainService {
 		
 		Domain domain = new Domain();
 		domain.setId(1);
-		domain.setName("Gmail");
+		domain.setName("Facebook");
 		domain.setUserName("rohitsingh17219@gmail.com");
 		domain.setPassword("Qwerty@123");
 		
