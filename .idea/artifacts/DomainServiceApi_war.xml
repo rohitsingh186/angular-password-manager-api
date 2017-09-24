@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="DomainServiceApi:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="DomainServiceApi.war">
+      <element id="artifact" artifact-name="DomainServiceApi:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -5,11 +5,12 @@ import java.util.List;
 
 import com.barclays.domain.Domain;
 import com.barclays.domain.DomainWrapper;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DomainService {
-	
+
 	public List<Domain> getDomains() {
-		
 		List<Domain> domainList = new ArrayList<Domain> ();
 		
 		Domain domain = new Domain();
@@ -29,19 +30,5 @@ public class DomainService {
 		domainList.add(domain);
 		
 		return domainList;
-		
 	}
-	
-	
-	public DomainWrapper getDomainWrapper() {
-		
-		DomainWrapper domainWrapper = new DomainWrapper();
-		
-		domainWrapper.setDomain(this.getDomains());
-		
-		return domainWrapper;
-		
-	}
-	
-	
 }
