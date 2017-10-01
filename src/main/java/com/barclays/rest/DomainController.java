@@ -3,12 +3,15 @@ package com.barclays.rest;
 import com.barclays.domain.Domain;
 import com.barclays.service.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 public class DomainController {
@@ -19,9 +22,15 @@ public class DomainController {
         this.domainService = domainService;
     }
 
-    @RequestMapping("/domains")
+    @RequestMapping(value = "/domains", method = GET)
     public List<Domain> getDomains() {
         List<Domain> domainList = domainService.getDomains();
         return domainList;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/domains", method = POST)
+    public Domain addDomain(@RequestBody Domain domain) {
+        return domainService.addDomain(domain);
     }
 }

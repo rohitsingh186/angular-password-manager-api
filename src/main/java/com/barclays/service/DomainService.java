@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static java.util.Objects.isNull;
+import static java.util.UUID.randomUUID;
+
 @Service
 public class DomainService {
 
@@ -20,6 +23,13 @@ public class DomainService {
 
     public List<Domain> getDomains() {
         return repository.findAll();
+    }
+
+    public Domain addDomain(Domain domain) {
+        if (isNull(repository.findById(domain.getId()))) {
+            domain.setId(randomUUID().toString());
+        }
+        return repository.save(domain);
     }
 
     private void initializeSomeDomainData() {
